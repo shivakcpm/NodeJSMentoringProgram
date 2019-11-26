@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "task1": "nodemon src/app/task1.js ",
     "task2": "nodemon src/app/task2.js ",
-    "task3":"babel-node src/app/task3.js  "
+    "task3": "babel-node src/app/task3.js  "
   },
   "repository": {
     "type": "git",
