@@ -1,0 +1,31 @@
+{
+  "name": "nodejsmentoringprogram",
+  "version": "1.0.0",
+  "description": "Home work tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "task1": "nodemon src/app/task1.js ",
+    "task2": "nodemon src/app/task2.js ",
+    "task3": "babel-node src/app/task3.js  "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivakcpm/NodeJSMentoringProgram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shivakcpm/NodeJSMentoringProgram/issues"
+  },
+  "homepage": "https://github.com/shivakcpm/NodeJSMentoringProgram#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.0"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "path": "^0.12.7"
+  }
+}
