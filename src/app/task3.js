@@ -5,17 +5,15 @@ import  util from 'util';
 import {pipeline} from 'stream';
 
 const csvPath =  path.join(__dirname, "../csv/node_mentoring_t1_2_input_example.csv");
-const readStream=fs.createReadStream(csvPath);
+const readStream = fs.createReadStream(csvPath);
+const folderPath =  path.join(__dirname, "../output");
+const textPath =  path.join(folderPath, "/node_mentoring_t1_2_input_example.txt");
 
-const textPath =  path.join(__dirname, "../output/node_mentoring_t1_2_input_example1.txt");
-const writeStream = fs.createWriteStream(textPath);
-
-async function readFile() {
-    readStream.pipe(csv()).pipe(writeStream).on('error',(err)=>{
-      console.log(err)
-    })
+if(!fs.existsSync(folderPath)){
+  fs.mkdirSync(folderPath,{recursive:true})
 }
 
+const writeStream = fs.createWriteStream(textPath);
 const pipelinePromise = util.promisify(pipeline);
 
 async function run() {
@@ -29,4 +27,3 @@ async function run() {
 
 run().catch(console.error);
 
-readFile();
