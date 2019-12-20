@@ -8,4 +8,8 @@ Home work tasks
 ## Task2 Command
 `npm run task2`
 ## Task3 Command
-`npm run task3`.
+`npm run task3`
+
+
+## Home Work2 Task
+`npm run homework2`
