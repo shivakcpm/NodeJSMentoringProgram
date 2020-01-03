@@ -1,26 +1,5 @@
-let users = [
-  {
-      "login": "shivaram",
-      "password": "cm5",
-      "age": 24,
-      "id": "9d9f61a8-bdda-42bb-8a18-6f128a4e84b2",
-      "isDeleted": false
-  },
-  {
-      "login": "shivakrishna",
-      "password": "cpmshiva57",
-      "age": 29,
-      "id": "f118239e-7b5c-4a74-97c6-6f128a86e4eb",
-      "isDeleted": false
-  },
-  {
-      "login": "shivaram",
-      "password": "cpmshiva57",
-      "age": 34,
-      "id": "957ca3ab-d8b0-4123-b509-6f128aa47b0a",
-      "isDeleted": false
-  }
-];
+
+let users = require("../../assets/users.json");
 
 function getUser(id) {
   return users.find(user => {
