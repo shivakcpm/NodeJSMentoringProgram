@@ -13,3 +13,7 @@ Home work tasks
 
 ## Home Work2 Task
 `npm run homework2`
+
+
+## Home Work3 Task
+`npm run homework3`
