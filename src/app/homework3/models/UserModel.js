@@ -23,7 +23,7 @@ var User = dbConnector.define(
       allowNull: false,
       validate: { min: 4, max: 130 }
     },
-    id: { type: Sequelize.UUID, primaryKey: true, defaultValue: uuid() },
+    id: { type: Sequelize.UUID, primaryKey: true, defaultValue: Sequelize.UUIDV4 },
     isDeleted: { type: Sequelize.BOOLEAN, defaultValue: false }
   },
   { freezeTableName: true }
@@ -39,8 +39,12 @@ async function findOne(id) {
 }
 
 async function create(user) {
+  try{
   let data = await User.create(user);
   return data.dataValues;
+  }catch(exe){
+    console.log(exe);
+  }
 }
 
 async function remove(id) {
