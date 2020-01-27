@@ -9,7 +9,7 @@
     "task2": "nodemon src/app/homework1/task2.js",
     "task3": "babel-node src/app/homework1/task3.js",
     "homework2": "nodemon src/app/homework2/task1.js",
-    "homework3": "nodemon src/app/homework3/controllers/task1.js"
+    "homework3": "nodemon src/app/homework3/task1.js"
   },
   "repository": {
     "type": "git",
