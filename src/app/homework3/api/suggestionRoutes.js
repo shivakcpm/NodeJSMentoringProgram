@@ -3,7 +3,7 @@ let router = express.Router();
 const Joi = require("joi");
 const validator = require("express-joi-validation").createValidator({});
 
-let userModel = require("../models/UserModel");
+let userModel = require("../database/models").Users;
 let UserService = require("../services/userService");
 
 let userService = new UserService(userModel);
@@ -18,7 +18,7 @@ router.get("/", validator.query(queryParamSchema), (req, res) => {
   if (!query) {
     return res.status(404).end();
   }
-  userService.searchUser(query, limit).then(users => {
+  userService.searchUser(limit, query).then(users => {
     res.send(users);
   });
 });
