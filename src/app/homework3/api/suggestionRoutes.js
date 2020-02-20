@@ -12,7 +12,7 @@ const queryParamSchema = Joi.object({
   query: Joi.string().required()
 });
 
-router.get("/", validator.query(queryParamSchema), (req, res) => {
+router.get("/", validator.query(queryParamSchema), (req, res,next) => {
   const query = req.query.query;
   const limit = req.query.limit || 10;
   if (!query) {
@@ -20,7 +20,10 @@ router.get("/", validator.query(queryParamSchema), (req, res) => {
   }
   userService.searchUser(limit, query).then(users => {
     res.send(users);
-  });
+  }).catch(error => {
+    next(error);
+     // throw e;
+   });
 });
 
 router.all("*", (req, res) => {
