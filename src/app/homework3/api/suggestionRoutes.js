@@ -21,6 +21,7 @@ router.get("/", validator.query(queryParamSchema), (req, res,next) => {
   userService.searchUser(limit, query).then(users => {
     res.send(users);
   }).catch(error => {
+    console.log(error);
     next(error);
      // throw e;
    });

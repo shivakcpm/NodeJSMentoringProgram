@@ -1,7 +1,6 @@
 let express = require("express");
 let router = express.Router();
 const Joi = require("joi");
-const fs = require('fs');
 const validator = require("express-joi-validation").createValidator({});
 
 let userModel = require("../database/models").Users;
