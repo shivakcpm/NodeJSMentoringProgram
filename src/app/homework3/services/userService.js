@@ -19,7 +19,7 @@ UserService.prototype.getUser = async function(id) {
 
 UserService.prototype.deleteUser = async function(id) {
   let user = await this.model.update(
-    { isDeleted: true },
+    { isdeleted: true },
     {
       where: { id },
       returning: true,
@@ -32,7 +32,7 @@ UserService.prototype.deleteUser = async function(id) {
 UserService.prototype.updateUser =  async function(id, payload) {
   try {
     let user = await this.model.update(payload, {
-      where: { id, isDeleted: false },
+      where: { id, isdeleted: false },
       returning: true,
       plain: true
     });
@@ -46,7 +46,7 @@ UserService.prototype.searchUser = async function(limit, query) {
   let iLike = Sequelize.Op.iLike;
   let users = await this.model.findAll({
     limit: limit,
-    where: { login: { [iLike]: query + "%" }, isDeleted: false }
+    where: { login: { [iLike]: query + "%" }, isdeleted: false }
   });
   return users;
 };

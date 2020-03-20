@@ -20,41 +20,58 @@ const bodySchema = Joi.object().keys({
     .required()
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res,next) => {
   const id = req.params.id;
-  userService.getUser(id).then(user => {
-    if (!user) {
-      return res.status(404).end();
-    } else {
+  
+  userService
+    .getUser(id)
+    .then(user => {
+      if (!user) {
+        return res.status(404).end();
+      } else {
+        res.send(user);
+      }
+    })
+    .catch(error => {
+     // fs.readFileSync('somefile.txt');
+      next(error);
+    });
+});
+
+router.post("/", validator.body(bodySchema), (req, res,next) => {
+  const body = req.body;
+  userService.createUser(body).then(user => res.send(user)).catch(error => {
+    next(error);
+     // throw e;
+   });
+});
+
+router.put("/:id", validator.body(bodySchema), (req, res, next) => {
+  const body = req.body;
+  const id = req.params.id;
+  userService
+    .updateUser(id, body)
+    .then(user => {
+      if (!user) {
+        return res.status(400).end();
+      }
       res.send(user);
-    }
-  });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
-router.post("/", validator.body(bodySchema), (req, res) => {
-  const body = req.body;
-  userService.createUser(body).then(user => res.send(user));
-});
-
-router.put("/:id", validator.body(bodySchema), (req, res) => {
-  const body = req.body;
-  const id = req.params.id;
-  userService.updateUser(id, body).then(user => {
-    if (!user) {
-      return res.status(404).end();
-    }
-    res.send(user);
-  });
-});
-
-router.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res,next) => {
   const id = req.params.id;
   userService.deleteUser(id).then(user => {
     if (!user) {
       return res.status(404).end();
     }
     res.send({ success: true });
-  });
+  }).catch(error => {
+    next(error);
+   });
 });
 
 router.all("*", (req, res) => {

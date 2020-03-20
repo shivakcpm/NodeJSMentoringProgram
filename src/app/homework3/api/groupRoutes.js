@@ -20,7 +20,7 @@ const bodySchema = Joi.object().keys({
 router.get("/all", (req, res) => {
   groupService.getAllGroups().then(groups => {
     res.send(groups);
-  });
+  }) .catch(err => next(error));
 });
 
 router.get("/:id", (req, res) => {
@@ -31,17 +31,17 @@ router.get("/:id", (req, res) => {
     } else {
       res.send(group);
     }
-  });
+  }) .catch(err => next(error));
 });
 
 
 
-router.post("/", validator.body(bodySchema), (req, res) => {
+router.post("/", validator.body(bodySchema), (req, res,next) => {
   const body = req.body;
   groupService
     .createGroup(body)
     .then(group => res.send(group))
-    .catch(err => res.status(400).send(err));
+    .catch(err => next(error));
 });
 
 router.put("/:id", validator.body(bodySchema), (req, res) => {
@@ -52,7 +52,7 @@ router.put("/:id", validator.body(bodySchema), (req, res) => {
       return res.status(404).end();
     }
     res.send(group);
-  });
+  }).catch(err => next(error));
 });
 
 router.delete("/:id", (req, res) => {
@@ -63,7 +63,7 @@ router.delete("/:id", (req, res) => {
       return res.status(404).end();
     }
     res.send({ success: true });
-  });
+  }).catch(err => next(error));
 });
 
 router.all("*", (req, res) => {
