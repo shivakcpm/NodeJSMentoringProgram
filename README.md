@@ -17,3 +17,18 @@ Home work tasks
 
 ## Home Work3 Task
 `npm run homework3`
+
+
+## Home Work7 Task
+
+`npm run homework3`
+
+* create .env file in root directory and paste the below content 
+
+`   dbUser= qpplkwlekktfma
+    password= f02c2da2b42277ae69fcd1430b1565e1a779795a4a2f7c6491d433f28db89769
+    database= dlscj75l5grfe
+    host= ec2-52-203-98-126.compute-1.amazonaws.com
+    dialect= postgres
+    protocol=postgres
+    ssl=true`
