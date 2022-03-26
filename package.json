@@ -42,7 +42,7 @@
     "express-joi-validation": "^4.0.3",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "path": "^0.12.7",
     "pg": "^7.17.1",
     "pg-hstore": "^2.3.3",
